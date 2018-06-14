@@ -16,15 +16,6 @@ public class LianJiaDocParser {
 	
 	private static String houseListSelector = "body .content .leftContent .sellListContent li";
 	
-	public static List<Document> getDocsViaURLS(List<String> URLS) throws Exception{
-		List<Document> docs = new ArrayList<Document>();
-		for(String URL : URLS){
-			Document doc = Jsoup.parse(NetUtils.httpGet(URL));
-			docs.add(doc);
-		}
-		return docs;
-	}
-	
 	public static List<LianJiaHouse> getHouseList(Document doc){
 		List<LianJiaHouse> list = new ArrayList<LianJiaHouse>();
 		Elements lis = doc.select(houseListSelector);
@@ -46,7 +37,7 @@ public class LianJiaDocParser {
                 }
 				String houseArea = "";
                 if (addresses.length >= 3) {
-                    houseArea = addresses[2];
+                    houseArea = addresses[2].replace("平米", "");
                 }
 				String houseDirection = "";
                 if (addresses.length >= 4) {
@@ -100,7 +91,6 @@ public class LianJiaDocParser {
 			}
 			
 		}
-		
 
 		return list;
 	}
