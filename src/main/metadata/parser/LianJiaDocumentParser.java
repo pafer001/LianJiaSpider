@@ -1,10 +1,13 @@
 package main.metadata.parser;
 
+import com.google.common.collect.Lists;
+import main.metadata.URLBuilder;
 import main.metadata.metadata.LianJiaHouse;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import util.net.NetUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LianJiaDocumentParser {
@@ -12,8 +15,12 @@ public class LianJiaDocumentParser {
 
     public static void main(String[] args) {
 
+
+
         try {
-            String URL = "https://bj.lianjia.com/ershoufang/bp0ep300ba0ea20000/";
+
+            List<LianJiaHouse> AllLianJiaHouses = Lists.newArrayList();
+            String URL = URLBuilder.getNextAreaUrl("");
             String content = NetUtils.httpGet(URL);
             Document doc = Jsoup.parse(content);
 
