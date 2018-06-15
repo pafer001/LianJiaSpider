@@ -1,0 +1,28 @@
+-- auto-generated definition
+CREATE TABLE t_lianjia_house
+(
+  id              BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  houseId         VARCHAR(500) DEFAULT '' NOT NULL,
+  houseTitle      VARCHAR(500) DEFAULT '' NOT NULL,
+  houseRegion     VARCHAR(1000)           NOT NULL,
+  houseRoom       VARCHAR(1000)           NOT NULL,
+  houseArea       VARCHAR(1000)           NOT NULL,
+  houseDirection  VARCHAR(1000)           NOT NULL,
+  houseDecoration VARCHAR(1000)           NOT NULL,
+  elevator        VARCHAR(1000)           NOT NULL,
+  housePrice      VARCHAR(1000)           NOT NULL,
+  unitPrice       VARCHAR(1000)           NOT NULL,
+  houseURL        VARCHAR(1000)           NOT NULL,
+  regionURL       VARCHAR(1000)           NOT NULL,
+  houseType       VARCHAR(1000)           NOT NULL,
+  houseHeight     VARCHAR(1000)           NOT NULL,
+  houseBuildYear  VARCHAR(1000)           NOT NULL,
+  houseBuildType  VARCHAR(1000)           NOT NULL,
+  taxFree         VARCHAR(1000)           NOT NULL,
+  hasKey          VARCHAR(1000)           NOT NULL,
+  positionName    VARCHAR(1000)           NOT NULL,
+  positionURL     VARCHAR(1000)           NOT NULL,
+  CONSTRAINT houseId
+  UNIQUE (houseId)
+);
