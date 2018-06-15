@@ -5,12 +5,10 @@ import java.util.List;
 
 import main.metadata.metadata.LianJiaHouse;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import util.net.NetUtils;
 
 public class LianJiaDocParser {
 	
@@ -54,13 +52,20 @@ public class LianJiaDocParser {
 				final String[] positionInfos = li.getElementsByClass("positionInfo").text().split("/");
 				String houseHeight = positionInfos[0];
 				final String[] houseBuildYearTypes = positionInfos[1].split("年建");
-				String houseBuildYear = houseBuildYearTypes[0];
-				String houseBuildType = houseBuildYearTypes[1];
+				String houseBuildYear = "";
+				if (houseBuildYearTypes.length >= 1) {
+					houseBuildYear = houseBuildYearTypes[0];
+				}
+				String houseBuildType = "";
+				if (houseBuildYearTypes.length >= 2) {
+					houseBuildType = houseBuildYearTypes[1];
+				}
+
 				String positionName = positionInfos[2];
 				String positionURL = li.getElementsByClass("positionInfo").select("a").attr("href");
 				String taxFree = li.getElementsByClass("taxfree").text();
 				String hasKey = li.getElementsByClass("haskey").text();
-				String housePrice =li.getElementsByClass("totalPrice").text();
+				String housePrice =li.getElementsByClass("totalPrice").text().replace("万", "");
 				String unitPrice =li.getElementsByClass("unitPrice").text()
 						.replace("单价", "").replace("元/平米", "");
 

@@ -10,8 +10,8 @@ public class URLBuilder {
             "fengtai", "shijingshan", "tongzhou", "changping", "daxing", "yizhuangkaifaqu",
     "shunyi", "fangshan", "mentougou", "pinggu", "huairou", "miyun", "yanqing");
 
-    static String URL = "https://bj.lianjia.com/ershoufang/%s/%s";
 
+    static String URL = "http://bj.lianjia.com/ershoufang/%s/%sdp1sf1ea20000ep100000/";
     public static String getAreaLastPageUrl(String area, int page){
         return String.format(URL, area, "pg" + (page + 1));
     }
@@ -20,7 +20,7 @@ public class URLBuilder {
         if (area.isEmpty()) {
             area = areas.get(0);
         } else {
-            int i = area.indexOf(area);
+            int i = areas.indexOf(area);
             if (i >= areas.size() -1) {
                 return "";
             }
@@ -29,16 +29,12 @@ public class URLBuilder {
         return area;
     }
 
-    public static String getNextAreaUrl(String area) {
 
-        String nextArea = getNextArea(area);
-        return String.format(URL, nextArea,  "pg"+1);
-    }
 
 
     public static void main(String[] args) {
 
-        String nextAreaUrl = getNextAreaUrl("");
+        String nextAreaUrl = getNextArea("xicheng");
         System.out.println(nextAreaUrl);
     }
 
